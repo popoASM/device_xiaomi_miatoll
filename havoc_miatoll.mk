@@ -1,4 +1,4 @@
-# Copyright (C) 2020 Fluid
+# Copyright (C) 2020-2022 Havoc-OS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,12 +13,12 @@
 # limitations under the License.
 
 $(call inherit-product, device/xiaomi/miatoll/device.mk)
-$(call inherit-product, vendor/aosp/common.mk)
+$(call inherit-product, vendor/havoc/config/common_full_phone.mk)
 
 # Bootanimation Resolution
 TARGET_BOOT_ANIMATION_RES := 1080
 
-PRODUCT_NAME := aosp_miatoll
+PRODUCT_NAME := havoc_miatoll
 PRODUCT_DEVICE := miatoll
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := SM6250
@@ -26,12 +26,4 @@ PRODUCT_MANUFACTURER := Xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 TARGET_SUPPORTS_GOOGLE_RECORDER := true
-
-# Set this flag in build script
-ifeq ($(CURRENT_BUILD_TYPE), gapps)
-# Use Gapps
-TARGET_SHIPS_SEPERATE_GAPPS_BUILD := true
-WITH_GAPPS := true
-TARGET_GAPPS_ARCH := arm64
-IS_PHONE := true
-endif
+TARGET_FACE_UNLOCK_SUPPORTED := true
